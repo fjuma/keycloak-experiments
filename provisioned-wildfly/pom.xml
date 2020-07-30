@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.wildfly.security.examples</groupId>
+    <artifactId>provisioned-wildfly</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0.Alpha1-SNAPSHOT</version>
+    <name>simple-webapp Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <version.galleon>4.2.5.Final</version.galleon>
+        <version.wildfly>21.0.0.Beta1-SNAPSHOT</version.wildfly>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jboss.galleon</groupId>
+                <artifactId>galleon-maven-plugin</artifactId>
+                <version>${version.galleon}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>provision</goal>
+                        </goals>
+                        <configuration>
+                            <install-dir>${project.build.directory}/wildfly</install-dir>
+                            <plugin-options>
+                                <optional-packages>passive+</optional-packages>
+                            </plugin-options>
+                            <feature-packs>
+                                <feature-pack>
+                                    <groupId>org.wildfly</groupId>
+                                    <artifactId>wildfly-galleon-pack</artifactId>
+                                    <version>${version.wildfly}</version>
+                                    <inherit-configs>false</inherit-configs>
+                                    <inherit-packages>false</inherit-packages>
+                                    <excluded-packages>
+                                        <name>product.conf</name>
+                                        <name>docs.schema</name>
+                                    </excluded-packages>
+                                </feature-pack>
+                            </feature-packs>
+                            <configs>
+                                <config>
+                                    <name>standalone.xml</name>
+                                    <model>standalone</model>
+                                    <layers>
+                                        <layer>core-tools</layer>
+                                        <layer>ee-security</layer>
+                                        <layer>elytron</layer>
+                                        <layer>jmx-remoting</layer>
+                                        <layer>secure-management</layer>
+                                        <layer>web-server</layer>
+                                    </layers>
+                                </config>
+                            </configs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
+</project>
