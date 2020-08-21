@@ -52,8 +52,7 @@
                                     <name>standalone.xml</name>
                                     <model>standalone</model>
                                     <layers>
-                                        <layer>elytron</layer>
-                                        <layer>undertow</layer>
+                                        <layer>web-server</layer>
                                         <layer>keycloak-elytron-oidc</layer>
                                     </layers>
                                 </config>
