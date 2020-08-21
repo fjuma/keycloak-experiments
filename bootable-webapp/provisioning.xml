@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<installation xmlns="urn:jboss:galleon:provisioning:3.0">
+    <feature-pack location="wildfly@maven(org.jboss.universe:community-universe):current#21.0.0.Beta1-SNAPSHOT">
+        <default-configs inherit="false"/>
+        <packages inherit="false">
+            <exclude name="product.conf"/>
+            <exclude name="docs.schema"/>
+        </packages>
+    </feature-pack>
+    <feature-pack location="org.keycloak:keycloak-adapter-galleon-pack:12.0.0-SNAPSHOT">
+        <default-configs inherit="false"/>
+        <packages inherit="false"/>
+    </feature-pack>
+    <config model="standalone" name="standalone.xml">
+        <layers>
+            <include name="web-server"/>
+            <include name="keycloak-elytron-oidc"/>
+        </layers>
+    </config>
+    <options>
+        <option name="optional-packages" value="passive+"/>
+    </options>
+</installation>

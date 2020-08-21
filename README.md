@@ -9,3 +9,8 @@ A simple deployment that can be deployed to a running WildFly server to test inv
 ## provisioned-wildfly
 
 A minimal pom which contains the definition to provision a WildFly server using Galleon, this will be enhanced to include the Keycloak feature pack. 
+
+## bootable-webapp
+
+A fork of the simple-webapp project, this time making use of bootable jar to add the Keycloak client adapter and configure it for use with the deployment.
+
