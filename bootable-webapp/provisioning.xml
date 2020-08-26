@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <installation xmlns="urn:jboss:galleon:provisioning:3.0">
-    <feature-pack location="wildfly@maven(org.jboss.universe:community-universe):current#21.0.0.Beta1-SNAPSHOT">
+    <feature-pack location="wildfly@maven(org.jboss.universe:community-universe):current#20.0.1.Final">
         <default-configs inherit="false"/>
         <packages inherit="false">
             <exclude name="product.conf"/>
@@ -15,7 +15,7 @@
     <config model="standalone" name="standalone.xml">
         <layers>
             <include name="web-server"/>
-            <include name="keycloak-elytron-oidc"/>
+            <include name="keycloak-client-oidc"/>
         </layers>
     </config>
     <options>
