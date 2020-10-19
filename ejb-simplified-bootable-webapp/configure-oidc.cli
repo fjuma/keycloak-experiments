@@ -1,0 +1,2 @@
+/subsystem=keycloak/secure-deployment=simple-webapp.war:add(realm=WildFly, resource=simple-webapp, public-client=true, auth-server-url=http://localhost:8080/auth/, ssl-required=EXTERNAL)
+/subsystem=ejb3/application-security-domain=other:write-attribute(name=security-domain,value=KeycloakDomain)
